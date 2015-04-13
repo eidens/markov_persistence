@@ -1,15 +1,27 @@
-# markov
+# markov_persistence
 
-A simple Clojure library for the generation of markov matrices.
-Accepts Clojure collections with items of any or different types and
-produces a frequency or probability matrix.
+Right now a command line interface for generating a markov matrix and
+writing it to a file.
+To be expanded for working with large data sets/matrices using some kind of database.
 
 ## Usage
 
-```` Clojure
-(eidens.markov.frequencies/matrix 1 '(0 1 0))
-=> {'(0) {'(1) 1},
-    '(1) {'(0) 1}}
+Setup: install the project to generate a markov matrix:
+```` bash
+git clone git@github.com:eidens/markov.git markov
+cd markov
+lein install
+````
+
+```` bash
+echo "(1 0 1)" > walk.edn
+lein run frequencies -i walk.edn
+=> {(0) {(1) 1}, (1) {(0) 1}}
+````
+
+```` bash
+echo "(1 0 1)" > walk.edn
+lein run frequencies -i walk.edn -f matrix.edn
 ````
 
 ## License
